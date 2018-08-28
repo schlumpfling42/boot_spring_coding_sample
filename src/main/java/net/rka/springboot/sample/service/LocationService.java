@@ -19,6 +19,12 @@ public class LocationService {
     private GeoApiContextService contextService;
 
 
+    /**
+     * Get the location as latitude and longitude
+     * @param zipCode
+     * @return LatLng
+     * @throws ServiceException
+     */
     public LatLng getLocation(String zipCode) throws ServiceException {
         try {
             GeoApiContext context = contextService.getContext();

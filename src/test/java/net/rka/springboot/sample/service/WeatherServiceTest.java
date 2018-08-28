@@ -38,7 +38,7 @@ public class WeatherServiceTest {
         System.out.println("Temp in Fahrenheit for 97006=" + weatherData.getMain().getTemp());
         System.out.println("City for 97006=" + weatherData.getName());
         Assert.assertEquals("City name must be Portland", "Portland", weatherData.getName());
-        Assert.assertTrue("Temparature must be small than 120", 120 > weatherData.getMain().getTemp());
+        Assert.assertTrue("Temperature must be small than 120", 120 > weatherData.getMain().getTemp());
 
     }
 

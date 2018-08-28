@@ -21,7 +21,7 @@ public class WeatherService {
     /**
      * Fetch the weather data for a given postal code
      * @param zipCode
-     * @return
+     * @return WeatherData containing city name and temperature
      * @throws ServiceException
      */
     public WeatherData getWeatherData(String zipCode) throws ServiceException {
