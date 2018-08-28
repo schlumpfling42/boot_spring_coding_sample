@@ -5,6 +5,8 @@ import java.util.List;
 
 public class WeatherAndLocationDataDTO {
 
+    private String message;
+
     private List<String> status = new ArrayList<>();
     private String city;
     private String temperature;
@@ -64,5 +66,13 @@ public class WeatherAndLocationDataDTO {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

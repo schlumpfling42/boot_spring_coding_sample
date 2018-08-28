@@ -45,7 +45,7 @@ public class WeatherAndLocationDataController {
                 WeatherData weatherData = weatherService.getWeatherData(zipCode);
                 resultWeatherData.getStatus().add("Weather data successfully retrieved");
                 resultWeatherData.setCity(weatherData.getName());
-                resultWeatherData.setTemperature(new DecimalFormat("##").format(weatherData.getMain().getTemp()));
+                resultWeatherData.setTemperature(new DecimalFormat("## F").format(weatherData.getMain().getTemp()));
             } catch (ServiceException se) {
                 resultWeatherData.getStatus().add("Unable to fetch weather data because of: " + se.getMessage());
             }
@@ -54,6 +54,7 @@ public class WeatherAndLocationDataController {
             try {
                 LatLng location = locationService.getLocation(zipCode);
                 double elevation = locationService.getElevation(zipCode);
+
 
                 resultWeatherData.getStatus().add("Location data successfully retrieved");
                 resultWeatherData.setElevation(new DecimalFormat("#### m").format(elevation));
@@ -72,6 +73,33 @@ public class WeatherAndLocationDataController {
             } catch (ServiceException se) {
                 resultWeatherData.getStatus().add("Unable to fetch timezone data because of: " + se.getMessage());
             }
+
+            StringBuilder messageBuilder = new StringBuilder();
+            messageBuilder.append("At the location ");
+            if(resultWeatherData.getCity() != null) {
+                messageBuilder.append(resultWeatherData.getCity());
+            } else {
+                messageBuilder.append("unknown");
+            }
+            messageBuilder.append(", the temperature is ");
+            if(resultWeatherData.getTemperature() != null) {
+                messageBuilder.append(resultWeatherData.getTemperature());
+            } else {
+                messageBuilder.append("unknown");
+            }
+            messageBuilder.append(", the time zone is ");
+            if(resultWeatherData.getTimezone() != null) {
+                messageBuilder.append(resultWeatherData.getTimezone());
+            } else {
+                messageBuilder.append("unknown");
+            }
+            messageBuilder.append(" and the elevation is ");
+            if(resultWeatherData.getElevation() != null) {
+                messageBuilder.append(resultWeatherData.getElevation());
+            } else {
+                messageBuilder.append("unknown");
+            }
+            resultWeatherData.setMessage(messageBuilder.toString());
 
         }catch (IllegalArgumentException iae) {
             resultWeatherData.getStatus().add("Invalid zip code");
