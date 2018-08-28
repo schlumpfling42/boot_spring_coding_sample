@@ -5,7 +5,7 @@ Simple boot spring application with rest endpoint retrieving
 - elevation data for a location
 for a zip code.
 
-The project is set up as a mvn project, all dependencies should be included.
+The project is set up as a Maven project, all dependencies are included.
 
 Google API and OpenWeatherMap keys have to be provided in \src\main\resources\app.properties to successfully call the backend services.
 
